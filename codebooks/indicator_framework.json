@@ -1,0 +1,314 @@
+{
+  "_comment": "Validated indicator ID lists per SDG number. Sourced from UIS-SDG4Monitoring_2026_01_28.xlsx (Framework + Indicators sheets). Do not edit manually — update via the Framework file and re-export.",
+  "_source": "UIS SDG4 Monitoring Framework, January 2026",
+  "_coverage_universe": "214 UIS World countries (derived from SDG_REGION.csv, REGION_ID='UIS: World')",
+
+  "global_indicators": {
+    "4.1.1": {
+      "label": "Proportion of children/young people achieving minimum proficiency in reading and mathematics",
+      "ig_groups": ["IG-READMATH"],
+      "indicator_ids": [
+        "READ.G2", "READ.G3", "READ.PRIMARY", "READ.LOWERSEC",
+        "MATH.G2", "MATH.G3", "MATH.PRIMARY", "MATH.LOWERSEC"
+      ]
+    },
+    "4.1.2": {
+      "label": "Completion rate (primary, lower secondary, upper secondary)",
+      "ig_groups": ["IG-CR"],
+      "indicator_ids": ["CR.1", "CR.2", "CR.3"],
+      "note": "Observed data only. CR.MOD.* (modelled) excluded."
+    },
+    "4.2.1": {
+      "label": "Proportion of children 24-59 months developmentally on track",
+      "ig_groups": ["IG-ONTRACK.THREE.DOMAINS"],
+      "indicator_ids": ["ONTRACK.THREE.DOMAINS"]
+    },
+    "4.2.2": {
+      "label": "Participation rate in organised learning (1 year before official primary entry age)",
+      "ig_groups": ["IG-NERA.AGM1.CP", "IG-NARA.AGM1"],
+      "indicator_ids": ["NERA.AGM1.CP", "NARA.AGM1"]
+    },
+    "4.3.1": {
+      "label": "Participation rate of youth and adults in formal and non-formal education and training",
+      "ig_groups": ["IG-PRYA.12MO"],
+      "indicator_ids": [
+        "PRYA.12MO.AG15T64", "PRYA.12MO.AG15T24",
+        "PRYA.12MO.AG25T54", "PRYA.12MO.AG55T64"
+      ]
+    },
+    "4.4.1": {
+      "label": "Proportion of youth and adults with ICT skills, by type of skill",
+      "ig_groups": ["IG-ICTSKILL"],
+      "indicator_ids": [
+        "ICTSKILLINFOBAS", "ICTSKILLINFOABAS", "ICTSKILLCOMMBAS", "ICTSKILLCOMMABAS",
+        "ICTSKILLCONTBAS", "ICTSKILLCONTABAS", "ICTSKILLPROBBAS", "ICTSKILLPROBABAS",
+        "ICTSKILLSAFEBAS", "ICTSKILLSAFEABAS",
+        "ICTSKILLVRFY", "ICTSKILLGSINF", "ICTSKILLDLDONLD", "ICTSKILLHLTHINF",
+        "ICTSKILLEMAIL", "ICTSKILLVOIP", "ICTSKILLSNTWK", "ICTSKILLONLCNS",
+        "ICTSKILLCOPA", "ICTSKILLEPRS", "ICTSKILLARSP", "ICTSKILLPCPR",
+        "ICTSKILLONLSFT", "ICTSKILLUPLD", "ICTSKILLPRVCY", "ICTSKILLSCRTY",
+        "ICTSKILLSOFT", "ICTSKILLINST", "ICTSKILLTRAF", "ICTSKILLINTBNK",
+        "ICTSKILLFONLCRS", "ICTSKILLFGSPUR"
+      ]
+    },
+    "4.5.1": {
+      "label": "Parity indices for all disaggregable education indicators",
+      "ig_groups": [],
+      "indicator_ids": [
+        "CR.1.GPIA", "CR.2.GPIA", "CR.3.GPIA",
+        "ROFST.1.CP", "READ.PRIMARY", "MATH.PRIMARY"
+      ],
+      "note": "Parity meta-indicator. Proxied via GPIA variants of other indicators."
+    },
+    "4.6.1": {
+      "label": "Youth and adult literacy rate",
+      "ig_groups": ["IG-LR"],
+      "indicator_ids": ["LR.AG15T24", "LR.AG15T99", "LR.AG25T64", "LR.AG65T99"],
+      "note": "Observed data only. LR.GALP.* (modelled projections) excluded by default."
+    },
+    "4.7.1": {
+      "label": "Extent to which GCED and ESD including greening education are mainstreamed",
+      "ig_groups": ["IG-GCS", "IG-SGE"],
+      "indicator_ids": [
+        "GCS.NATLEDUPOL", "GCS.CURRICULA", "GCS.TEACHEDU", "GCS.STUDENTASSESSMENT",
+        "SGE.EnvSust", "SGE.ClimCh", "SGE.BioDiv", "SGE.Overall"
+      ]
+    },
+    "4.a.1": {
+      "label": "Proportion of schools with access to basic services",
+      "ig_groups": ["IG-SCHBSP"],
+      "indicator_ids": [
+        "SCHBSP.1.WINTERN", "SCHBSP.2.WINTERN", "SCHBSP.3.WINTERN", "SCHBSP.2T3.WINTERN",
+        "SCHBSP.1.WELEC",   "SCHBSP.2.WELEC",   "SCHBSP.3.WELEC",
+        "SCHBSP.1.WWATA",   "SCHBSP.2.WWATA",   "SCHBSP.3.WWATA",
+        "SCHBSP.1.WWASH",   "SCHBSP.2.WWASH",   "SCHBSP.3.WWASH",
+        "SCHBSP.1.WTOILA",  "SCHBSP.2.WTOILA",  "SCHBSP.3.WTOILA",
+        "SCHBSP.1.WCOMPUT", "SCHBSP.2.WCOMPUT", "SCHBSP.3.WCOMPUT", "SCHBSP.2T3.WCOMPUT",
+        "SCHBSP.1.WINFSTUDIS", "SCHBSP.2.WINFSTUDIS", "SCHBSP.3.WINFSTUDIS"
+      ]
+    },
+    "4.b.1": {
+      "label": "Volume of ODA flows for scholarships by sector and type of study",
+      "ig_groups": ["IG-ODAFLOW.VOLUMESCHOLARSHIP"],
+      "indicator_ids": ["ODAFLOW.VOLUMESCHOLARSHIP"]
+    },
+    "4.c.1": {
+      "label": "Proportion of teachers with minimum required qualifications by education level",
+      "ig_groups": ["IG-TRTP"],
+      "indicator_ids": ["TRTP.02", "TRTP.1", "TRTP.2", "TRTP.3", "TRTP.2T3"]
+    },
+    "1.a.2": {
+      "label": "Proportion of total government spending on education",
+      "ig_groups": ["IG-XGOVEXP.IMF"],
+      "indicator_ids": ["XGOVEXP.IMF", "XGOVEXP.IMFcalc"]
+    },
+    "FFA": {
+      "label": "Government expenditure on education as a percentage of GDP",
+      "ig_groups": ["IG-XGDP.FSGOV"],
+      "indicator_ids": ["XGDP.FSGOV"]
+    }
+  },
+
+  "thematic_indicators": {
+    "4.1.0": {
+      "label": "Proportion of children and young people prepared for the future",
+      "ig_groups": ["IG-PREPFUTURE"],
+      "indicator_ids": [
+        "PREPFUTURE.1.MATH", "PREPFUTURE.2.MATH",
+        "PREPFUTURE.1.READ", "PREPFUTURE.2.READ"
+      ]
+    },
+    "4.1.3": {
+      "label": "Gross intake ratio to last grade (primary, lower secondary)",
+      "ig_groups": ["IG-AIR"],
+      "indicator_ids": ["AIR.1.GLAST", "AIR.2.GPV.GLAST"]
+    },
+    "4.1.4": {
+      "label": "Out-of-school rate by education level",
+      "ig_groups": ["IG-ROFST.CP", "IG-ROFST.H"],
+      "indicator_ids": [
+        "ROFST.AGM1.CP", "ROFST.1.CP", "ROFST.2.CP", "ROFST.3.CP",
+        "ROFST.1T2.CP", "ROFST.2T3.CP", "ROFST.1T3.CP",
+        "ROFST.H.1", "ROFST.H.2", "ROFST.H.3"
+      ]
+    },
+    "4.1.5": {
+      "label": "Percentage of children over-age for grade",
+      "ig_groups": ["IG-OAEPG", "IG-OAEPG.H"],
+      "indicator_ids": ["OAEPG.1", "OAEPG.2.GPV", "OAEPG.H.1", "OAEPG.H.2"]
+    },
+    "4.1.6": {
+      "label": "Administration of a nationally representative learning assessment",
+      "ig_groups": ["IG-ADMI"],
+      "indicator_ids": [
+        "ADMI.GRADE2OR3PRIM.READ", "ADMI.ENDOFPRIM.READ", "ADMI.ENDOFLOWERSEC.READ",
+        "ADMI.GRADE2OR3PRIM.MAT",  "ADMI.ENDOFPRIM.MAT",  "ADMI.ENDOFLOWERSEC.MAT"
+      ]
+    },
+    "4.1.7": {
+      "label": "Years of free and compulsory primary and secondary education",
+      "ig_groups": [],
+      "indicator_ids": ["YEARS.FC.FREE.1T3", "YEARS.FC.COMP.1T3"]
+    },
+    "4.2.3": {
+      "label": "Children under 5 experiencing positive and stimulating home learning environments",
+      "ig_groups": ["IG-POSTIMUENV"],
+      "indicator_ids": ["POSTIMUENV"]
+    },
+    "4.2.4": {
+      "label": "Net enrolment rate in pre-primary education",
+      "ig_groups": ["IG-NER"],
+      "indicator_ids": ["NER.0.CP", "NER.01.CP", "NER.02.CP"]
+    },
+    "4.2.5": {
+      "label": "Years of free and compulsory pre-primary education",
+      "ig_groups": [],
+      "indicator_ids": ["YEARS.FC.FREE.02", "YEARS.FC.COMP.02"]
+    },
+    "4.3.2": {
+      "label": "Gross enrolment ratio for tertiary education",
+      "ig_groups": ["IG-GER", "IG-GAR"],
+      "indicator_ids": ["GER.5T8", "GAR.5T8"]
+    },
+    "4.3.3": {
+      "label": "Participation rate in technical-vocational programmes (15-24 year-olds)",
+      "ig_groups": ["IG-EV1524P.2T5.V"],
+      "indicator_ids": ["EV1524P.2T5.V"]
+    },
+    "4.4.2": {
+      "label": "Proportion of youth and adults achieving minimum proficiency in digital literacy",
+      "ig_groups": ["IG-DL"],
+      "indicator_ids": ["DL"]
+    },
+    "4.4.3": {
+      "label": "Youth and adult educational attainment rates",
+      "ig_groups": ["IG-EA"],
+      "indicator_ids": [
+        "EA.S1T8.AG25T99", "EA.1T8.AG25T99", "EA.2T8.AG25T99", "EA.3T8.AG25T99",
+        "EA.4T8.AG25T99",  "EA.5T8.AG25T99", "EA.6T8.AG25T99", "EA.7T8.AG25T99",
+        "EA.8.AG25T99"
+      ]
+    },
+    "4.5.2": {
+      "label": "Proportion of students with first or home language as language of instruction",
+      "ig_groups": ["IG-FHLANGILP"],
+      "indicator_ids": ["FHLANGILP.G2T3", "FHLANGILP.PRIMARY", "FHLANGILP.LOWERSEC"]
+    },
+    "4.5.3": {
+      "label": "Existence of funding mechanisms to reallocate resources to disadvantaged populations",
+      "ig_groups": ["IG-RESDISADVPOP"],
+      "indicator_ids": ["RESDISADVPOP"]
+    },
+    "4.5.4": {
+      "label": "Expenditure on education per student by level and source of funding",
+      "ig_groups": ["IG-XUNIT.GDPCAP.FFNTR", "IG-XUNIT.PPPCONST.FFNTR"],
+      "indicator_ids": [
+        "XUNIT.GDPCAP.02.FSGOV.FFNTR", "XUNIT.GDPCAP.1.FSGOV.FFNTR",
+        "XUNIT.GDPCAP.1.FSHH.FFNTR",   "XUNIT.GDPCAP.2.FSGOV.FFNTR",
+        "XUNIT.GDPCAP.2T3.FSGOV.FFNTR","XUNIT.GDPCAP.2T3.FSHH.FFNTR",
+        "XUNIT.GDPCAP.3.FSGOV.FFNTR",  "XUNIT.GDPCAP.5T8.FSGOV.FFNTR",
+        "XUNIT.GDPCAP.5T8.FSHH.FFNTR",
+        "XUNIT.PPPCONST.02.FSGOV.FFNTR","XUNIT.PPPCONST.1.FSGOV.FFNTR",
+        "XUNIT.PPPCONST.1.FSHH.FFNTR",  "XUNIT.PPPCONST.2.FSGOV.FFNTR",
+        "XUNIT.PPPCONST.2T3.FSGOV.FFNTR","XUNIT.PPPCONST.2T3.FSHH.FFNTR",
+        "XUNIT.PPPCONST.3.FSGOV.FFNTR", "XUNIT.PPPCONST.5T8.FSGOV.FFNTR",
+        "XUNIT.PPPCONST.5T8.FSHH.FFNTR"
+      ]
+    },
+    "4.5.5": {
+      "label": "Proportion of total aid to education allocated to least developed countries",
+      "ig_groups": ["IG-AIDEDUC.LOWINCOMECOUNT"],
+      "indicator_ids": ["AIDEDUC.LOWINCOMECOUNT"]
+    },
+    "4.5.6": {
+      "label": "Expenditure on education by source as percentage of GDP",
+      "ig_groups": ["IG-XGDP.FFNTR"],
+      "indicator_ids": [
+        "XGDP.FSGOV.FFNTR", "XGDP.FSHH.FFNTR", "XGDP.FSPE.FFNTR",
+        "XGDP.FSINT.FFNTR", "XGDP.FFNTR", "XGDP.FSGOV.FSHH.FSODA.FFNTR"
+      ]
+    },
+    "4.6.2": {
+      "label": "Proportion achieving minimum proficiency in functional literacy and numeracy",
+      "ig_groups": ["IG-YADULT.PROF"],
+      "indicator_ids": ["YADULT.PROFILITERACY", "YADULT.PROFINUMERACY"]
+    },
+    "4.7.2": {
+      "label": "Proportion of schools providing life skills-based HIV and sexuality education",
+      "ig_groups": ["IG-WHIVSEXED"],
+      "indicator_ids": ["SCHBSP.1.WHIVSEXED", "SCHBSP.2.WHIVSEXED", "SCHBSP.3.WHIVSEXED"]
+    },
+    "4.7.4": {
+      "label": "Proportion of students showing adequate understanding of global citizenship and sustainability",
+      "ig_groups": ["IG-GCS.LOWERSEC"],
+      "indicator_ids": ["GCS.LOWERSEC"]
+    },
+    "4.7.5": {
+      "label": "Proportion of students showing proficiency in environmental science and geoscience",
+      "ig_groups": ["IG-ESG.LOWERSEC"],
+      "indicator_ids": ["ESG.LOWERSEC"]
+    },
+    "4.a.2": {
+      "label": "Proportion of students experiencing bullying in the last 12 months",
+      "ig_groups": ["IG-PER.BULLIED"],
+      "indicator_ids": ["PER.BULLIED.1", "PER.BULLIED.2"]
+    },
+    "4.a.3": {
+      "label": "Number of attacks on students, personnel and institutions",
+      "ig_groups": ["IG-N.ATTACKS"],
+      "indicator_ids": ["N.ATTACKS"]
+    },
+    "4.a.4": {
+      "label": "Proportion of school-attending children receiving school meals",
+      "ig_groups": [],
+      "indicator_ids": [],
+      "note": "Not available in current UIS bulk dataset."
+    },
+    "4.c.2": {
+      "label": "Pupil-trained teacher ratio by education level",
+      "ig_groups": ["IG-PTRHC.TRAINED"],
+      "indicator_ids": [
+        "PTRHC.02.TRAINED", "PTRHC.1.TRAINED", "PTRHC.2.TRAINED",
+        "PTRHC.3.TRAINED",  "PTRHC.2T3.TRAINED"
+      ]
+    },
+    "4.c.3": {
+      "label": "Proportion of teachers qualified according to national standards",
+      "ig_groups": ["IG-QUTP"],
+      "indicator_ids": ["QUTP.02", "QUTP.1", "QUTP.2", "QUTP.3", "QUTP.2T3"]
+    },
+    "4.c.4": {
+      "label": "Pupil-qualified teacher ratio by education level",
+      "ig_groups": ["IG-PTRHC.QUALIFIED"],
+      "indicator_ids": [
+        "PTRHC.02.QUALIFIED", "PTRHC.1.QUALIFIED", "PTRHC.2.QUALIFIED",
+        "PTRHC.3.QUALIFIED",  "PTRHC.2T3.QUALIFIED"
+      ]
+    },
+    "4.c.5": {
+      "label": "Average teacher salary relative to other professions requiring comparable qualifications",
+      "ig_groups": ["IG-TSALARY"],
+      "indicator_ids": ["TSALARY.0", "TSALARY.1", "TSALARY.2", "TSALARY.3"]
+    },
+    "4.c.6": {
+      "label": "Teacher attrition rate by education level",
+      "ig_groups": ["IG-TATTRR"],
+      "indicator_ids": [
+        "TATTRR.02", "TATTRR.1", "TATTRR.2", "TATTRR.3",
+        "TATTRR.2T3", "TATTRR.2T3.GPV", "TATTRR.2T3.V"
+      ]
+    },
+    "4.c.7": {
+      "label": "Proportion of teachers receiving in-service training in last 12 months",
+      "ig_groups": ["IG-TPROFD"],
+      "indicator_ids": ["TPROFD.1", "TPROFD.2"]
+    }
+  },
+
+  "validity_rules": {
+    "excluded_magnitudes": ["SUPP", "NA", "INCLUDED"],
+    "excluded_id_prefixes": ["CR.MOD.", "LR.GALP."],
+    "default_coverage_threshold_year": 2020,
+    "default_population_year": 2025
+  }
+}

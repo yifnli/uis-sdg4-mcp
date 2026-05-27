@@ -1,0 +1,33 @@
+{
+  "_comment": "UIS regional classification. Derived from SDG_REGION.csv at runtime but canonical order is fixed here.",
+  "_source": "UIS SDG4 Regional Classification",
+
+  "world_region_id": "UIS: World",
+  "world_country_count": 214,
+
+  "subregion_order": [
+    "UIS: Sub-Saharan Africa",
+    "UIS: Arab States",
+    "UIS: Central Asia",
+    "UIS: East Asia and the Pacific",
+    "UIS: Latin America and the Caribbean",
+    "UIS: North America and Western Europe",
+    "UIS: South and West Asia",
+    "UIS: Central and Eastern Europe"
+  ],
+
+  "subregion_short_names": {
+    "UIS: Sub-Saharan Africa":               "Sub-Saharan Africa",
+    "UIS: Arab States":                      "Arab States",
+    "UIS: Central Asia":                     "Central Asia",
+    "UIS: East Asia and the Pacific":        "East Asia and the Pacific",
+    "UIS: Latin America and the Caribbean":  "Latin America and the Caribbean",
+    "UIS: North America and Western Europe": "North America and Western Europe",
+    "UIS: South and West Asia":              "South and West Asia",
+    "UIS: Central and Eastern Europe":       "Central and Eastern Europe"
+  },
+
+  "iso3_to_region": {
+    "_note": "This mapping is derived at runtime from SDG_REGION.csv. Do not hardcode country lists here."
+  }
+}

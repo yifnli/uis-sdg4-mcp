@@ -1,0 +1,45 @@
+{
+  "_comment": "Data validity rules and UIS API configuration. Matches UIS bulk download conventions.",
+
+  "api": {
+    "base_url": "https://api.uis.unesco.org/api/public",
+    "endpoints": {
+      "data":       "/data/indicators",
+      "indicators": "/definitions/indicators",
+      "geo_units":  "/definitions/geoUnits"
+    },
+    "default_timeout_seconds": 20,
+    "retry_attempts": 2
+  },
+
+  "validity": {
+    "excluded_magnitudes": ["SUPP", "NA", "INCLUDED"],
+    "excluded_id_prefixes": ["CR.MOD.", "LR.GALP."],
+    "note": "Records with MAGNITUDE in excluded list, or whose INDICATOR_ID starts with an excluded prefix, are treated as not observed/reported data."
+  },
+
+  "coverage": {
+    "default_threshold_year": 2020,
+    "note": "A country is covered if it has at least one valid record with YEAR strictly greater than threshold_year."
+  },
+
+  "population": {
+    "emc_id": "200101",
+    "emc_id_note": "Total population, all ages, both sexes",
+    "year": "2025"
+  },
+
+  "writing_style": {
+    "tone": "neutral, factual",
+    "avoid": [
+      "evaluative adjectives such as poor, weak, alarming, impressive, strong",
+      "attributing data gaps to country behaviour or capacity",
+      "speculative causal claims"
+    ],
+    "preferred": [
+      "describe what the data show",
+      "note years for which data are available or not available",
+      "use passive constructions when describing gaps"
+    ]
+  }
+}
