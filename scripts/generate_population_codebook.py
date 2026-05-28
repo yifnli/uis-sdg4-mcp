@@ -87,6 +87,11 @@ def main():
     df["CO_CODE_STR"] = df["CO_CODE"].astype(str).str.strip()
     df["ISO3"]        = df["CO_CODE_STR"].map(cocode_map)
     df                = df[df["ISO3"].notna() & df["ISO3"].isin(world_iso3)]
+    df                = df[df["EM_FIG"].notna()]
+    # EM_FIG is in thousands — convert to whole persons
+    df["EM_FIG"]      = (df["EM_FIG"] * 1000).round()
+    # Prefer MQ_ID=NaN (observed) over MQ_ID=2 (estimated); keep one row per country
+    df                = df.sort_values("MQ_ID", na_position="first")
     df                = df.rename(columns={"EM_FIG": "POPULATION"})
     df                = df[["ISO3", "POPULATION"]].drop_duplicates("ISO3")
 
