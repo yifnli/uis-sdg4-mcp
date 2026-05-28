@@ -42,6 +42,13 @@ from tools.fetch_data import (
     validate_indicator_ids_against_api,
 )
 from tools.coverage import compute_coverage, compute_sdg_coverage
+from tools.resolve_country import (
+    resolve_country,
+    resolve_countries,
+    compute_population_coverage,
+    list_countries_by_region,
+    get_all_iso3s,
+)
 from tools.briefing import (
     format_country_briefing,
     format_trend_table,
@@ -247,6 +254,73 @@ async def list_tools() -> list[Tool]:
             },
         ),
         Tool(
+            name="resolve_country",
+            description=(
+                "Resolve a country name (in any common form), alias, or ISO3 code "
+                "to its UIS entry including ISO3 code, official name, UIS sub-region, "
+                "and 2025 population. "
+                "Always call this first when a user provides a country name rather than "
+                "an ISO3 code — the UIS API requires ISO3. "
+                "Handles common aliases: 'China'→CHN, 'Tanzania'→TZA, 'UK'→GBR, "
+                "'Iran'→IRN, 'South Korea'→KOR, 'UAE'→ARE, etc."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type":        "string",
+                        "description": "Country name, alias, or ISO3 code e.g. 'China', 'Tanzania', 'TZA'",
+                    }
+                },
+                "required": ["query"],
+            },
+        ),
+        Tool(
+            name="compute_population_coverage",
+            description=(
+                "Given a list of ISO3 codes that have data for an indicator, "
+                "compute what share of global population (2025) and UIS world countries "
+                "those countries represent. "
+                "Use after get_indicator_data or compute_coverage to add the "
+                "population dimension to coverage statistics. "
+                "Population data: UN World Population Prospects 2024 (214 UIS countries)."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "covered_iso3s": {
+                        "type":        "array",
+                        "items":       {"type": "string"},
+                        "description": "ISO3 codes of countries that have data for the indicator",
+                    }
+                },
+                "required": ["covered_iso3s"],
+            },
+        ),
+        Tool(
+            name="list_countries_by_region",
+            description=(
+                "List UIS World countries optionally filtered by sub-region. "
+                "Returns ISO3, name, region, and 2025 population for each country. "
+                "Useful for building regional coverage summaries."
+            ),
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "region": {
+                        "type":        "string",
+                        "description": (
+                            "UIS sub-region name (full or partial). "
+                            "Options: 'Sub-Saharan Africa', 'Arab States', 'Central Asia', "
+                            "'East Asia and the Pacific', 'Latin America and the Caribbean', "
+                            "'North America and Western Europe', 'South and West Asia', "
+                            "'Central and Eastern Europe'. Omit for all 214 countries."
+                        ),
+                    }
+                },
+            },
+        ),
+        Tool(
             name="get_writing_style_guide",
             description=(
                 "Return the UIS writing style guide for generating briefings and reports. "
@@ -333,6 +407,21 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             "source": "UIS SDG4 MCP codebook",
         })
 
+    # ── resolve_country ──────────────────────────────────────────────────────
+    elif name == "resolve_country":
+        result = resolve_country(arguments["query"])
+        return _out(result)
+
+    # ── compute_population_coverage ───────────────────────────────────────────
+    elif name == "compute_population_coverage":
+        result = compute_population_coverage(arguments["covered_iso3s"])
+        return _out(result)
+
+    # ── list_countries_by_region ──────────────────────────────────────────────
+    elif name == "list_countries_by_region":
+        result = list_countries_by_region(arguments.get("region"))
+        return _out(result)
+
     else:
         return _out({"error": f"Unknown tool: '{name}'"})
 
@@ -406,7 +495,28 @@ def _run_self_test():
     assert briefing["summary"]["without_data"] == 0
     print(f"✓ format_country_briefing → structured correctly")
 
-    print("\n✓ All self-tests passed.\n")
+    # Test 8: country resolution
+    from tools.resolve_country import resolve_country, compute_population_coverage, get_all_iso3s
+    r8 = resolve_country("Tanzania")
+    assert r8["iso3"] == "TZA", f"Tanzania should resolve to TZA, got {r8}"
+    r8b = resolve_country("South Korea")
+    assert r8b["iso3"] == "KOR"
+    r8c = resolve_country("UK")
+    assert r8c["iso3"] == "GBR"
+    print(f"✓ resolve_country('Tanzania') → TZA, ('South Korea') → KOR, ('UK') → GBR")
+
+    # Test 9: population coverage
+    pop = compute_population_coverage(["CHN", "IND", "USA"])
+    assert pop["n_countries_covered"] == 3
+    assert pop["pct_population"] > 35, "CHN+IND+USA should cover >35% of world pop"
+    print(f"✓ compute_population_coverage(['CHN','IND','USA']) → {pop['pct_population']}% of world pop")
+
+    # Test 10: all 214 countries loaded
+    all_iso3s = get_all_iso3s()
+    assert len(all_iso3s) == 214
+    print(f"✓ get_all_iso3s() → 214 UIS World countries")
+
+    print("\n✓ All self-tests passed (10 checks).\n")
 
 
 if __name__ == "__main__":
