@@ -267,6 +267,146 @@ class TestTrendTableFormatter:
         assert "note" in t
 
 
+
+
+# ═══════════════════════════════════════════════════════════════
+# COUNTRY RESOLUTION TESTS — no network required
+# ═══════════════════════════════════════════════════════════════
+
+class TestResolveCountry:
+
+    def test_iso3_direct(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("UZB")
+        assert r["iso3"]    == "UZB"
+        assert r["name"]    == "Uzbekistan"
+        assert r["in_uis_world"] is True
+
+    def test_iso3_lowercase(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("uzb")
+        assert r["iso3"] == "UZB"
+
+    def test_full_name(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Uzbekistan")
+        assert r["iso3"] == "UZB"
+
+    def test_alias_china(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("China")
+        assert r["iso3"] == "CHN"
+
+    def test_alias_tanzania(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Tanzania")
+        assert r["iso3"] == "TZA"
+
+    def test_alias_uk(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("UK")
+        assert r["iso3"] == "GBR"
+
+    def test_alias_iran(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Iran")
+        assert r["iso3"] == "IRN"
+
+    def test_alias_south_korea(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("South Korea")
+        assert r["iso3"] == "KOR"
+
+    def test_alias_uae(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("UAE")
+        assert r["iso3"] == "ARE"
+
+    def test_alias_usa(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("USA")
+        assert r["iso3"] == "USA"
+
+    def test_alias_vietnam(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Vietnam")
+        assert r["iso3"] == "VNM"
+
+    def test_alias_drc(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("DRC")
+        assert r["iso3"] == "COD"
+
+    def test_alias_turkey(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Turkey")
+        assert r["iso3"] == "TUR"
+
+    def test_unknown_returns_error(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("Narnia")
+        assert "error" in r
+
+    def test_result_has_region(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("TZA")
+        assert "region" in r
+        assert "Sub-Saharan Africa" in r["region"]
+
+    def test_result_has_population(self):
+        from tools.resolve_country import resolve_country
+        r = resolve_country("CHN")
+        assert r["population_2025"] is not None
+        assert r["population_2025"] > 1_000_000_000
+
+    def test_resolve_multiple(self):
+        from tools.resolve_country import resolve_countries
+        r = resolve_countries(["China", "Tanzania", "INVALID"])
+        assert r["summary"]["resolved"]   == 2
+        assert r["summary"]["unresolved"] == 1
+
+
+class TestPopulationCoverage:
+
+    def test_full_world_coverage(self):
+        from tools.resolve_country import compute_population_coverage, get_all_iso3s
+        all_iso3s = get_all_iso3s()
+        r = compute_population_coverage(all_iso3s)
+        assert r["n_countries_covered"] == 214
+        assert r["pct_countries"]       == 100.0
+        assert r["pct_population"]      == 100.0
+
+    def test_empty_coverage(self):
+        from tools.resolve_country import compute_population_coverage
+        r = compute_population_coverage([])
+        assert r["n_countries_covered"] == 0
+        assert r["pct_countries"]       == 0.0
+        assert r["pct_population"]      == 0.0
+
+    def test_china_india_coverage(self):
+        from tools.resolve_country import compute_population_coverage
+        r = compute_population_coverage(["CHN", "IND"])
+        # China + India = ~35% of world population
+        assert r["pct_population"] > 30
+        assert r["n_countries_covered"] == 2
+
+    def test_population_year_present(self):
+        from tools.resolve_country import compute_population_coverage
+        r = compute_population_coverage(["UZB"])
+        assert r["population_year"] == 2025
+
+    def test_214_countries_loaded(self):
+        from tools.resolve_country import get_all_iso3s
+        iso3s = get_all_iso3s()
+        assert len(iso3s) == 214
+
+    def test_population_total_reasonable(self):
+        from tools.resolve_country import compute_population_coverage, get_all_iso3s
+        r = compute_population_coverage(get_all_iso3s())
+        # World population ~8 billion
+        assert 7_000_000_000 < r["population_total"] < 9_000_000_000
+
+
 # ═══════════════════════════════════════════════════════════════
 # ONLINE TESTS — require UIS API access
 # Mark: pytest tests/ -v -m api

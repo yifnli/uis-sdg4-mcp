@@ -1,0 +1,1352 @@
+{
+  "_comment": "Country name → ISO3 mapping for 214 UIS World countries. Derived from SDG_COUNTRY.csv and SDG_REGION.csv. Update when UIS country list changes.",
+  "_source": "SDG_COUNTRY.csv + SDG_REGION.csv, UIS Bulk Download February 2026",
+  "_count": 214,
+  "countries": [
+    {
+      "iso3": "ABW",
+      "name": "Aruba",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "AFG",
+      "name": "Afghanistan",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "AGO",
+      "name": "Angola",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "AIA",
+      "name": "Anguilla",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "ALB",
+      "name": "Albania",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "AND",
+      "name": "Andorra",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "ARE",
+      "name": "United Arab Emirates",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ARG",
+      "name": "Argentina",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "ARM",
+      "name": "Armenia",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "ATG",
+      "name": "Antigua and Barbuda",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "AUS",
+      "name": "Australia",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "AUT",
+      "name": "Austria",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "AZE",
+      "name": "Azerbaijan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "BDI",
+      "name": "Burundi",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "BEL",
+      "name": "Belgium",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "BEN",
+      "name": "Benin",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "BFA",
+      "name": "Burkina Faso",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "BGD",
+      "name": "Bangladesh",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "BGR",
+      "name": "Bulgaria",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "BHR",
+      "name": "Bahrain",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "BHS",
+      "name": "Bahamas",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "BLR",
+      "name": "Belarus",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "BLZ",
+      "name": "Belize",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BMU",
+      "name": "Bermuda",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BOL",
+      "name": "Bolivia (Plurinational State of)",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BRA",
+      "name": "Brazil",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BRB",
+      "name": "Barbados",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "BRN",
+      "name": "Brunei Darussalam",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "BTN",
+      "name": "Bhutan",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "BWA",
+      "name": "Botswana",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "CAF",
+      "name": "Central African Republic",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "CAN",
+      "name": "Canada",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "CHE",
+      "name": "Switzerland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "CHL",
+      "name": "Chile",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "CHN",
+      "name": "China",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "CIV",
+      "name": "Côte d'Ivoire",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "CMR",
+      "name": "Cameroon",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "COD",
+      "name": "Democratic Republic of the Congo",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "COG",
+      "name": "Congo",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "COK",
+      "name": "Cook Islands",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "COL",
+      "name": "Colombia",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "COM",
+      "name": "Comoros",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "CPV",
+      "name": "Cabo Verde",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "CRI",
+      "name": "Costa Rica",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "CUB",
+      "name": "Cuba",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "CUW",
+      "name": "Curaçao",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "CYM",
+      "name": "Cayman Islands",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "CYP",
+      "name": "Cyprus",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "CZE",
+      "name": "Czechia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "DEU",
+      "name": "Germany",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "DJI",
+      "name": "Djibouti",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "DMA",
+      "name": "Dominica",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "DNK",
+      "name": "Denmark",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "DOM",
+      "name": "Dominican Republic",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "DZA",
+      "name": "Algeria",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ECU",
+      "name": "Ecuador",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "EGY",
+      "name": "Egypt",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ERI",
+      "name": "Eritrea",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "ESP",
+      "name": "Spain",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "EST",
+      "name": "Estonia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "ETH",
+      "name": "Ethiopia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "FIN",
+      "name": "Finland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "FJI",
+      "name": "Fiji",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "FRA",
+      "name": "France",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "FRO",
+      "name": "Faeroe Islands",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "FSM",
+      "name": "Micronesia (Federated States of)",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "GAB",
+      "name": "Gabon",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GBR",
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "GEO",
+      "name": "Georgia",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "GHA",
+      "name": "Ghana",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GIB",
+      "name": "Gibraltar",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "GIN",
+      "name": "Guinea",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GMB",
+      "name": "Gambia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GNB",
+      "name": "Guinea-Bissau",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GNQ",
+      "name": "Equatorial Guinea",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "GRC",
+      "name": "Greece",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "GRD",
+      "name": "Grenada",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "GRL",
+      "name": "Greenland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "GTM",
+      "name": "Guatemala",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "GUY",
+      "name": "Guyana",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "HKG",
+      "name": "China, Hong Kong Special Administrative Region",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "HND",
+      "name": "Honduras",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "HRV",
+      "name": "Croatia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "HTI",
+      "name": "Haiti",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "HUN",
+      "name": "Hungary",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "IDN",
+      "name": "Indonesia",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "IND",
+      "name": "India",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "IRL",
+      "name": "Ireland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "IRN",
+      "name": "Iran (Islamic Republic of)",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "IRQ",
+      "name": "Iraq",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ISL",
+      "name": "Iceland",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "ISR",
+      "name": "Israel",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "ITA",
+      "name": "Italy",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "JAM",
+      "name": "Jamaica",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "JOR",
+      "name": "Jordan",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "JPN",
+      "name": "Japan",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "KAZ",
+      "name": "Kazakhstan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "KEN",
+      "name": "Kenya",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "KGZ",
+      "name": "Kyrgyzstan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "KHM",
+      "name": "Cambodia",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "KIR",
+      "name": "Kiribati",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "KNA",
+      "name": "Saint Kitts and Nevis",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "KOR",
+      "name": "Republic of Korea",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "KWT",
+      "name": "Kuwait",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "LAO",
+      "name": "Lao People's Democratic Republic",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "LBN",
+      "name": "Lebanon",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "LBR",
+      "name": "Liberia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "LBY",
+      "name": "Libya",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "LCA",
+      "name": "Saint Lucia",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "LIE",
+      "name": "Liechtenstein",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "LKA",
+      "name": "Sri Lanka",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "LSO",
+      "name": "Lesotho",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "LTU",
+      "name": "Lithuania",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "LUX",
+      "name": "Luxembourg",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "LVA",
+      "name": "Latvia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "MAC",
+      "name": "China, Macao Special Administrative Region",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "MAR",
+      "name": "Morocco",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "MCO",
+      "name": "Monaco",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "MDA",
+      "name": "Republic of Moldova",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "MDG",
+      "name": "Madagascar",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "MDV",
+      "name": "Maldives",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "MEX",
+      "name": "Mexico",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "MHL",
+      "name": "Marshall Islands",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "MKD",
+      "name": "North Macedonia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "MLI",
+      "name": "Mali",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "MLT",
+      "name": "Malta",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "MMR",
+      "name": "Myanmar",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "MNE",
+      "name": "Montenegro",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "MNG",
+      "name": "Mongolia",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "MOZ",
+      "name": "Mozambique",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "MRT",
+      "name": "Mauritania",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "MSR",
+      "name": "Montserrat",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "MUS",
+      "name": "Mauritius",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "MWI",
+      "name": "Malawi",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "MYS",
+      "name": "Malaysia",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "NAM",
+      "name": "Namibia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "NER",
+      "name": "Niger",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "NGA",
+      "name": "Nigeria",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "NIC",
+      "name": "Nicaragua",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "NIU",
+      "name": "Niue",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "NLD",
+      "name": "Netherlands",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "NOR",
+      "name": "Norway",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "NPL",
+      "name": "Nepal",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "NRU",
+      "name": "Nauru",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "NZL",
+      "name": "New Zealand",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "OMN",
+      "name": "Oman",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "PAK",
+      "name": "Pakistan",
+      "region": "UIS: South and West Asia"
+    },
+    {
+      "iso3": "PAN",
+      "name": "Panama",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "PER",
+      "name": "Peru",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "PHL",
+      "name": "Philippines",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "PLW",
+      "name": "Palau",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "PNG",
+      "name": "Papua New Guinea",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "POL",
+      "name": "Poland",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "PRI",
+      "name": "Puerto Rico",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "PRK",
+      "name": "Democratic People's Republic of Korea",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "PRT",
+      "name": "Portugal",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "PRY",
+      "name": "Paraguay",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "PSE",
+      "name": "Palestine",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "QAT",
+      "name": "Qatar",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ROU",
+      "name": "Romania",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "RUS",
+      "name": "Russian Federation",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "RWA",
+      "name": "Rwanda",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SAU",
+      "name": "Saudi Arabia",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "SDN",
+      "name": "Sudan",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "SEN",
+      "name": "Senegal",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SGP",
+      "name": "Singapore",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "SLB",
+      "name": "Solomon Islands",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "SLE",
+      "name": "Sierra Leone",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SLV",
+      "name": "El Salvador",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "SMR",
+      "name": "San Marino",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "SOM",
+      "name": "Somalia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SRB",
+      "name": "Serbia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "SSD",
+      "name": "South Sudan",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "STP",
+      "name": "Sao Tome and Principe",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SUR",
+      "name": "Suriname",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "SVK",
+      "name": "Slovakia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "SVN",
+      "name": "Slovenia",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "SWE",
+      "name": "Sweden",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "SWZ",
+      "name": "Eswatini",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SXM",
+      "name": "Sint Maarten (Dutch part)",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "SYC",
+      "name": "Seychelles",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "SYR",
+      "name": "Syrian Arab Republic",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "TCA",
+      "name": "Turks and Caicos Islands",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "TCD",
+      "name": "Chad",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "TGO",
+      "name": "Togo",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "THA",
+      "name": "Thailand",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "TJK",
+      "name": "Tajikistan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "TKL",
+      "name": "Tokelau",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "TKM",
+      "name": "Turkmenistan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "TLS",
+      "name": "Timor-Leste",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "TON",
+      "name": "Tonga",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "TTO",
+      "name": "Trinidad and Tobago",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "TUN",
+      "name": "Tunisia",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "TUR",
+      "name": "Türkiye",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "TUV",
+      "name": "Tuvalu",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "TZA",
+      "name": "United Republic of Tanzania",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "UGA",
+      "name": "Uganda",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "UKR",
+      "name": "Ukraine",
+      "region": "UIS: Central and Eastern Europe"
+    },
+    {
+      "iso3": "URY",
+      "name": "Uruguay",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "USA",
+      "name": "United States of America",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "UZB",
+      "name": "Uzbekistan",
+      "region": "UIS: Central Asia"
+    },
+    {
+      "iso3": "VAT",
+      "name": "Holy See",
+      "region": "UIS: North America and Western Europe"
+    },
+    {
+      "iso3": "VCT",
+      "name": "Saint Vincent and the Grenadines",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "VEN",
+      "name": "Venezuela (Bolivarian Republic of)",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "VGB",
+      "name": "British Virgin Islands",
+      "region": "UIS: Latin America and the Caribbean"
+    },
+    {
+      "iso3": "VNM",
+      "name": "Viet Nam",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "VUT",
+      "name": "Vanuatu",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "WSM",
+      "name": "Samoa",
+      "region": "UIS: East Asia and the Pacific"
+    },
+    {
+      "iso3": "XDN",
+      "name": "Sudan (pre-secession)",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "YEM",
+      "name": "Yemen",
+      "region": "UIS: Arab States"
+    },
+    {
+      "iso3": "ZAF",
+      "name": "South Africa",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "ZMB",
+      "name": "Zambia",
+      "region": "UIS: Sub-Saharan Africa"
+    },
+    {
+      "iso3": "ZWE",
+      "name": "Zimbabwe",
+      "region": "UIS: Sub-Saharan Africa"
+    }
+  ],
+  "aliases": {
+    "bolivia": "BOL",
+    "iran": "IRN",
+    "south korea": "KOR",
+    "north korea": "PRK",
+    "republic of korea": "KOR",
+    "democratic people's republic of korea": "PRK",
+    "syria": "SYR",
+    "tanzania": "TZA",
+    "vietnam": "VNM",
+    "viet nam": "VNM",
+    "laos": "LAO",
+    "moldova": "MDA",
+    "russia": "RUS",
+    "côte d'ivoire": "CIV",
+    "ivory coast": "CIV",
+    "congo": "COG",
+    "dr congo": "COD",
+    "democratic republic of the congo": "COD",
+    "drc": "COD",
+    "republic of the congo": "COG",
+    "cape verde": "CPV",
+    "czechia": "CZE",
+    "czech republic": "CZE",
+    "eswatini": "SWZ",
+    "swaziland": "SWZ",
+    "north macedonia": "MKD",
+    "turkey": "TUR",
+    "türkiye": "TUR",
+    "gambia": "GMB",
+    "the gambia": "GMB",
+    "micronesia": "FSM",
+    "timor-leste": "TLS",
+    "east timor": "TLS",
+    "brunei": "BRN",
+    "myanmar": "MMR",
+    "burma": "MMR",
+    "palestine": "PSE",
+    "state of palestine": "PSE",
+    "saint vincent": "VCT",
+    "saint kitts": "KNA",
+    "usa": "USA",
+    "united states": "USA",
+    "uk": "GBR",
+    "great britain": "GBR",
+    "england": "GBR",
+    "uae": "ARE",
+    "united arab emirates": "ARE",
+    "afghanistan": "AFG",
+    "albania": "ALB",
+    "algeria": "DZA",
+    "american samoa": "ASM",
+    "andorra": "AND",
+    "angola": "AGO",
+    "anguilla": "AIA",
+    "antigua and barbuda": "ATG",
+    "argentina": "ARG",
+    "armenia": "ARM",
+    "aruba": "ABW",
+    "australia": "AUS",
+    "azerbaijan": "AZE",
+    "austria": "AUT",
+    "bahamas": "BHS",
+    "bahrain": "BHR",
+    "bangladesh": "BGD",
+    "barbados": "BRB",
+    "belgium": "BEL",
+    "bosnia and herzegovina": "BIH",
+    "belize": "BLZ",
+    "bermuda": "BMU",
+    "bhutan": "BTN",
+    "bolivia (plurinational state of)": "BOL",
+    "botswana": "BWA",
+    "brazil": "BRA",
+    "solomon islands": "SLB",
+    "palau": "PLW",
+    "brunei darussalam": "BRN",
+    "bulgaria": "BGR",
+    "croatia": "HRV",
+    "burundi": "BDI",
+    "cameroon": "CMR",
+    "canada": "CAN",
+    "cabo verde": "CPV",
+    "cayman islands": "CYM",
+    "central african republic": "CAF",
+    "chad": "TCD",
+    "chile": "CHL",
+    "china": "CHN",
+    "colombia": "COL",
+    "comoros": "COM",
+    "mayotte": "MYT",
+    "cook islands": "COK",
+    "costa rica": "CRI",
+    "cuba": "CUB",
+    "cyprus": "CYP",
+    "benin": "BEN",
+    "denmark": "DNK",
+    "dominica": "DMA",
+    "dominican republic": "DOM",
+    "ecuador": "ECU",
+    "egypt": "EGY",
+    "el salvador": "SLV",
+    "equatorial guinea": "GNQ",
+    "eritrea": "ERI",
+    "estonia": "EST",
+    "ethiopia": "ETH",
+    "faeroe islands": "FRO",
+    "falkland islands (malvinas)": "FLK",
+    "fiji": "FJI",
+    "finland": "FIN",
+    "åland islands": "ALA",
+    "france": "FRA",
+    "french guiana": "GUF",
+    "french polynesia": "PYF",
+    "djibouti": "DJI",
+    "gabon": "GAB",
+    "georgia": "GEO",
+    "germany": "DEU",
+    "ghana": "GHA",
+    "gibraltar": "GIB",
+    "kiribati": "KIR",
+    "greece": "GRC",
+    "greenland": "GRL",
+    "grenada": "GRD",
+    "guadeloupe": "GLP",
+    "guam": "GUM",
+    "guatemala": "GTM",
+    "guinea": "GIN",
+    "guyana": "GUY",
+    "haiti": "HTI",
+    "holy see": "VAT",
+    "honduras": "HND",
+    "china, hong kong special administrative region": "HKG",
+    "hungary": "HUN",
+    "iceland": "ISL",
+    "india": "IND",
+    "indonesia": "IDN",
+    "iran (islamic republic of)": "IRN",
+    "iraq": "IRQ",
+    "ireland": "IRL",
+    "israel": "ISR",
+    "italy": "ITA",
+    "jamaica": "JAM",
+    "japan": "JPN",
+    "jordan": "JOR",
+    "kazakhstan": "KAZ",
+    "kenya": "KEN",
+    "cambodia": "KHM",
+    "kuwait": "KWT",
+    "kyrgyzstan": "KGZ",
+    "lao people's democratic republic": "LAO",
+    "latvia": "LVA",
+    "lebanon": "LBN",
+    "lesotho": "LSO",
+    "liberia": "LBR",
+    "libya": "LBY",
+    "liechtenstein": "LIE",
+    "lithuania": "LTU",
+    "luxembourg": "LUX",
+    "china, macao special administrative region": "MAC",
+    "madagascar": "MDG",
+    "malawi": "MWI",
+    "malaysia": "MYS",
+    "maldives": "MDV",
+    "mali": "MLI",
+    "malta": "MLT",
+    "martinique": "MTQ",
+    "mauritania": "MRT",
+    "mauritius": "MUS",
+    "mexico": "MEX",
+    "micronesia (federated states of)": "FSM",
+    "monaco": "MCO",
+    "mongolia": "MNG",
+    "montenegro": "MNE",
+    "montserrat": "MSR",
+    "morocco": "MAR",
+    "mozambique": "MOZ",
+    "northern mariana islands": "MNP",
+    "namibia": "NAM",
+    "nauru": "NRU",
+    "nepal": "NPL",
+    "netherlands": "NLD",
+    "curaçao": "CUW",
+    "netherlands antilles": "ANT",
+    "sint maarten (dutch part)": "SXM",
+    "new caledonia": "NCL",
+    "vanuatu": "VUT",
+    "new zealand": "NZL",
+    "nicaragua": "NIC",
+    "niger": "NER",
+    "nigeria": "NGA",
+    "niue": "NIU",
+    "norfolk island": "NFK",
+    "norway": "NOR",
+    "oman": "OMN",
+    "marshall islands": "MHL",
+    "pakistan": "PAK",
+    "panama": "PAN",
+    "papua new guinea": "PNG",
+    "paraguay": "PRY",
+    "peru": "PER",
+    "philippines": "PHL",
+    "pitcairn": "PCN",
+    "poland": "POL",
+    "portugal": "PRT",
+    "republic of moldova": "MDA",
+    "guinea-bissau": "GNB",
+    "puerto rico": "PRI",
+    "qatar": "QAT",
+    "réunion": "REU",
+    "romania": "ROU",
+    "russian federation": "RUS",
+    "rwanda": "RWA",
+    "saint-barthélemy": "BLM",
+    "saint helena": "SHN",
+    "saint kitts and nevis": "KNA",
+    "saint lucia": "LCA",
+    "saint-martin (french part)": "MAF",
+    "saint pierre and miquelon": "SPM",
+    "saint vincent and the grenadines": "VCT",
+    "slovakia": "SVK",
+    "san marino": "SMR",
+    "slovenia": "SVN",
+    "sao tome and principe": "STP",
+    "saudi arabia": "SAU",
+    "senegal": "SEN",
+    "serbia": "SRB",
+    "seychelles": "SYC",
+    "sierra leone": "SLE",
+    "singapore": "SGP",
+    "somalia": "SOM",
+    "south africa": "ZAF",
+    "zimbabwe": "ZWE",
+    "spain": "ESP",
+    "south sudan": "SSD",
+    "sudan": "SDN",
+    "western sahara": "ESH",
+    "sri lanka": "LKA",
+    "sudan (pre-secession)": "XDN",
+    "suriname": "SUR",
+    "svalbard and jan mayen islands": "SJM",
+    "sweden": "SWE",
+    "switzerland": "CHE",
+    "syrian arab republic": "SYR",
+    "tajikistan": "TJK",
+    "united republic of tanzania": "TZA",
+    "thailand": "THA",
+    "togo": "TGO",
+    "tokelau": "TKL",
+    "tonga": "TON",
+    "tuvalu": "TUV",
+    "trinidad and tobago": "TTO",
+    "tunisia": "TUN",
+    "turkmenistan": "TKM",
+    "turks and caicos islands": "TCA",
+    "uganda": "UGA",
+    "belarus": "BLR",
+    "ukraine": "UKR",
+    "united kingdom of great britain and northern ireland": "GBR",
+    "channel islands": "ZZA",
+    "guernsey": "GGY",
+    "jersey": "JEY",
+    "isle of man": "IMN",
+    "united states of america": "USA",
+    "burkina faso": "BFA",
+    "uruguay": "URY",
+    "uzbekistan": "UZB",
+    "venezuela (bolivarian republic of)": "VEN",
+    "british virgin islands": "VGB",
+    "united states virgin islands": "VIR",
+    "wallis and futuna islands": "WLF",
+    "samoa": "WSM",
+    "yemen": "YEM",
+    "zambia": "ZMB"
+  }
+}
