@@ -1,32 +1,34 @@
 [project]
 name = "uis-sdg4-mcp"
-version = "0.1.0"
-description = "MCP server for querying UIS published SDG4 education indicator data via natural language"
+version = "0.3.0"
+description = "MCP server for querying UNESCO DataHub SDG4 education indicator data via natural language"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [
   { name = "UNESCO Institute for Statistics" }
 ]
-keywords = ["unesco", "uis", "sdg4", "education", "mcp", "ai"]
+keywords = ["unesco", "uis", "sdg4", "education", "mcp", "ai", "datahub", "opendatasoft"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Science/Research",
   "Topic :: Scientific/Engineering :: Information Analysis",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 dependencies = [
-  "mcp>=1.0.0",
+  "fastmcp>=2.0.0",
   "requests>=2.31.0",
-  "pandas>=2.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
   "pytest>=7.0",
   "pytest-asyncio>=0.23",
+]
+scripts = [
+  "pandas>=2.0.0",
+  "openpyxl>=3.1.0",
 ]
 
 [project.scripts]
@@ -41,6 +43,6 @@ packages = ["tools", "codebooks"]
 
 [tool.pytest.ini_options]
 markers = [
-  "api: marks tests that require a live UIS API connection (deselect with -m 'not api')",
+  "api: marks tests that require a live DataHub API connection (deselect with -m 'not api')",
 ]
 asyncio_mode = "auto"
