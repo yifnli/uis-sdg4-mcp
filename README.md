@@ -184,6 +184,8 @@ The `codebooks/` directory contains the authoritative mappings:
 | `indicator_framework.json` | All 45 SDG 4 indicators: SDG number → IG group codes → validated indicator IDs |
 | `region_order.json` | UIS sub-region canonical order and naming |
 | `validity_rules.json` | MAGNITUDE exclusions, modelled prefix list, DataHub/ODS `api` block (`base_url`, `dataset_id: uis001`, `max_page_limit: 100`) |
+| `countries.json` | 214 UIS World countries + alias map |
+| `population_2025.json` | Total population per ISO3 for the UIS World countries, sourced from the DataHub `wdi001` (World Bank WDI) `population_total`, latest year (2024). 200/214 covered; a few territories (Namibia, Hong Kong, Puerto Rico, Holy See, …) are absent from wdi001. Regenerate with `uv run --extra scripts python scripts/generate_population_codebook.py --from-datahub`. |
 
 ### Updating the codebook
 

@@ -40,7 +40,8 @@ Managed by `uv` — there is no `requirements.txt` or hand-made venv. `uv sync -
 hardcoding values:
 - `indicator_framework.json` — 45 SDG 4 indicators (14 global + 31 thematic): SDG number → IG group → validated IDs. Also embeds `validity_rules`.
 - `validity_rules.json` — excluded magnitudes & ID prefixes, threshold year, writing style. The `api` block holds the ODS `base_url`, `dataset_id: uis001`, and `max_page_limit: 100`. Mirrors the rules inside `indicator_framework.json`.
-- `countries.json` — 214 UIS World countries + alias map. `population_2025.json` — UN WPP 2024 totals.
+- `countries.json` — 214 UIS World countries + alias map.
+- `population_2025.json` — total population per ISO3 (200/214 UIS countries) from DataHub `wdi001` (World Bank) `population_total`, year 2024; 14 territories absent from wdi001. Regenerate via `--from-datahub`.
 
 ## Validity filtering (the core invariant)
 
@@ -61,7 +62,7 @@ excluded so they're never presented as reported data. Don't bypass this filter w
 
 - Codebook counts are asserted in tests (14 global, 31 thematic, 214 countries). If you change a
   codebook, update the corresponding assertions in `server.py::_run_self_test` and `tests/test_tools.py`.
-- Population values: the UIS bulk download reports `EM_FIG` in thousands — the generator scales ×1000 (see commit history). Keep population in absolute persons.
+- Population now comes from DataHub `wdi001` (World Bank `population_total`, latest year) via `generate_population_codebook.py --from-datahub`, covering 200/214 countries. The legacy UIS-demographic path (EM_FIG ×1000) remains in the script for the old workflow.
 - Tool errors are returned as data (`{"error": ...}`), not raised — per-indicator isolation depends on this.
 
 ## Reference
