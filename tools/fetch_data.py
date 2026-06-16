@@ -28,6 +28,7 @@ _RECORDS_URL = f"{_BASE_URL}/catalog/datasets/{_DATASET}/records"
 _MAX_LIMIT  = _API.get("max_page_limit", 100)
 _TIMEOUT    = _API.get("default_timeout_seconds", 20)
 _RETRIES    = _API.get("retry_attempts", 2)
+_EXCL_PREFIXES = _RULES.get("validity", {}).get("excluded_id_prefixes", [])
 
 
 def _get(url: str, params: dict | None = None) -> dict | None:
@@ -92,8 +93,10 @@ def _paginate(where: str, select: str | None = None, group_by: str | None = None
         collected.extend(results)
         total = data.get("total_count", len(collected))
         offset += _MAX_LIMIT
-        if offset >= total or not results or offset >= 10000:
+        if offset >= total or not results:
             break
+        if offset >= 10000:
+            return {"_error": f"Result set exceeds the 10000-record ODS pagination ceiling (total={total}); narrow the query (country/indicator/year)."}
     return collected
 
 
@@ -176,6 +179,8 @@ def fetch_distinct_countries(
 
     Returns a list of ISO3 strings, or {'_error': ...} on failure.
     """
+    if any(indicator_id.upper().startswith(p.upper()) for p in _EXCL_PREFIXES):
+        return []
     clauses = [f"indicator_id={_q(indicator_id)}"]
     if after_year is not None:
         clauses.append(f"year>{int(after_year)}")

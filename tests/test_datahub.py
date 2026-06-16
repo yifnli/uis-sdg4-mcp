@@ -90,6 +90,12 @@ from unittest.mock import patch as _patch
 from tools.coverage import compute_coverage
 
 
+def test_fetch_distinct_countries_shortcircuits_modelled_ids():
+    from tools.fetch_data import fetch_distinct_countries
+    # CR.MOD. is an excluded modelled prefix → must return [] WITHOUT any HTTP call
+    assert fetch_distinct_countries("CR.MOD.1") == []
+
+
 def test_world_coverage_uses_distinct_countries():
     def fake_distinct(indicator_id, after_year=None):
         if after_year is None:

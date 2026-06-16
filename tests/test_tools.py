@@ -366,6 +366,15 @@ class TestResolveCountry:
         assert r["summary"]["unresolved"] == 1
 
 
+class TestListCountriesByRegion:
+
+    def test_list_countries_by_region_unknown_returns_error_not_crash(self):
+        from tools.resolve_country import list_countries_by_region
+        out = list_countries_by_region("Narnia")
+        assert isinstance(out, dict)
+        assert "error" in out
+
+
 class TestPopulationCoverage:
 
     def test_full_world_coverage(self):

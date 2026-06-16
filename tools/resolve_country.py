@@ -185,7 +185,6 @@ def list_countries_by_region(region: str | None = None) -> dict:
     ]
 
     if not matched:
-        from codebooks_meta import _REGIONS  # noqa: local import avoids circular
         return {
             "error":    f"No countries matched region '{region}'.",
             "hint":     "Available regions: Sub-Saharan Africa, Arab States, Central Asia, "

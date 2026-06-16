@@ -106,7 +106,9 @@ def compute_coverage(
                 results[iid] = {"indicator_id": iid, "error": covered_any["_error"]}
                 continue
             covered_post = fetch_distinct_countries(iid, after_year=threshold_year)
+            post_error = None
             if isinstance(covered_post, dict) and "_error" in covered_post:
+                post_error = covered_post["_error"]
                 covered_post = []
 
             # Keep only ISO3s in the UIS World universe for population weighting.
@@ -134,6 +136,7 @@ def compute_coverage(
                 },
                 "population_reference_year": pop_any.get("population_year", 2025),
                 "population_source":         pop_any.get("population_source", ""),
+                "error_post_threshold":      post_error,
             }
 
         return {
