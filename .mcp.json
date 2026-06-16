@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "uis-sdg4": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/moi/Documents/CODE/PROTOTYPES/uis-sdg4-mcp",
+        "run",
+        "python",
+        "server.py"
+      ]
+    }
+  }
+}
