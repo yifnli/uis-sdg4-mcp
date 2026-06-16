@@ -2,7 +2,7 @@
 
 A [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server that gives AI assistants
 direct, grounded access to UNESCO Institute for Statistics (UIS) published SDG 4 education indicator
-data via the UIS public API.
+data via the UNESCO DataHub (data.unesco.org, Opendatasoft Explore API v2.1) dataset `uis001`.
 
 The server handles all indicator ID resolution, API calls, and validity filtering.
 The AI receives only clean, observed data and generates narrative from it —
@@ -27,35 +27,33 @@ Previous attempts at AI-driven UIS data tools failed because:
 
 ## Prerequisites
 
-- Python 3.10 or later
+- Python 3.12 or later (managed by [uv](https://docs.astral.sh/uv/))
 - An MCP-compatible client (Claude Desktop, Cursor, or any client implementing the [MCP spec](https://modelcontextprotocol.io))
-- Internet access to reach `api.uis.unesco.org`
+- Internet access to reach `data.unesco.org`
 
 ---
 
 ## Installation
 
 ```bash
-# 1. Clone the repository
+# 1. Clone
 git clone https://github.com/<your-username>/uis-sdg4-mcp.git
 cd uis-sdg4-mcp
 
-# 2. Create a virtual environment
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+# 2. Install uv (https://docs.astral.sh/uv/) if needed
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 3. Install dependencies
-pip install -r requirements.txt
+# 3. Sync dependencies (creates .venv, writes uv.lock)
+uv sync --extra dev
 
-# 4. Run the self-test (no API connection needed)
-python server.py --test
+# 4. Offline self-test
+uv run python server.py --test
 
-# 5. Run the full offline test suite
-pip install pytest
-pytest tests/ -v -m "not api"
+# 5. Offline test suite
+uv run pytest tests/ -v -m "not api"
 
-# 6. Optionally run API tests (requires internet)
-pytest tests/ -v -m api
+# 6. Live DataHub tests (requires internet)
+uv run pytest tests/ -v -m api
 ```
 
 ---
@@ -71,28 +69,16 @@ Edit your Claude Desktop configuration file:
 {
   "mcpServers": {
     "uis-sdg4": {
-      "command": "python",
-      "args": ["/absolute/path/to/uis-sdg4-mcp/server.py"]
+      "command": "uv",
+      "args": ["--directory", "/absolute/path/to/uis-sdg4-mcp", "run", "python", "server.py"]
     }
   }
 }
 ```
 
-Replace `/absolute/path/to/uis-sdg4-mcp/server.py` with the actual full path on your machine.
+Replace `/absolute/path/to/uis-sdg4-mcp` with the actual full path on your machine.
+`uv` manages the virtual environment automatically — no separate activation step needed.
 Restart Claude Desktop. The tools will appear automatically.
-
-### Using a virtual environment (recommended)
-
-```json
-{
-  "mcpServers": {
-    "uis-sdg4": {
-      "command": "/absolute/path/to/uis-sdg4-mcp/venv/bin/python",
-      "args": ["/absolute/path/to/uis-sdg4-mcp/server.py"]
-    }
-  }
-}
-```
 
 ---
 
@@ -114,7 +100,7 @@ Always call this before fetching data when you know the SDG number but not the i
 ---
 
 ### `get_indicator_data`
-Fetches published UIS data for one or more indicator IDs and a country.
+Fetches published data from the UNESCO DataHub (dataset `uis001`) for one or more indicator IDs and a country.
 Returns only observed/reported data — modelled estimates excluded by default.
 Applies UIS validity rules (excludes MAGNITUDE: SUPP, NA, INCLUDED).
 
@@ -155,7 +141,7 @@ Optionally filter by `global` or `thematic` scope.
 ---
 
 ### `validate_indicator_ids`
-Checks whether given indicator IDs exist in the live UIS API.
+Checks whether given indicator IDs exist in the UNESCO DataHub (dataset `uis001`).
 Use after a data release update to verify codebook IDs are still current.
 
 ---
@@ -197,7 +183,7 @@ The `codebooks/` directory contains the authoritative mappings:
 |---|---|
 | `indicator_framework.json` | All 45 SDG 4 indicators: SDG number → IG group codes → validated indicator IDs |
 | `region_order.json` | UIS sub-region canonical order and naming |
-| `validity_rules.json` | MAGNITUDE exclusions, modelled prefix list, API configuration |
+| `validity_rules.json` | MAGNITUDE exclusions, modelled prefix list, DataHub/ODS `api` block (`base_url`, `dataset_id: uis001`, `max_page_limit: 100`) |
 
 ### Updating the codebook
 
@@ -205,9 +191,9 @@ When UIS publishes a new indicator framework version:
 
 1. Open `codebooks/indicator_framework.json`
 2. Add, remove, or update indicator ID lists for the affected SDG numbers
-3. Run `pytest tests/ -v -m "not api"` to verify consistency
-4. Run `python server.py --test` for a quick end-to-end check
-5. Optionally run `pytest tests/ -v -m api` to validate against the live API
+3. Run `uv run pytest tests/ -v -m "not api"` to verify consistency
+4. Run `uv run python server.py --test` for a quick end-to-end check
+5. Optionally run `uv run pytest tests/ -v -m api` to validate against the live DataHub
 
 ---
 
@@ -239,9 +225,9 @@ All generated text follows UIS conventions:
 ```
 uis-sdg4-mcp/
 ├── README.md
-├── requirements.txt
 ├── pyproject.toml
-├── server.py                        # MCP server entry point
+├── uv.lock
+├── server.py                        # FastMCP server entry point
 ├── codebooks/
 │   ├── indicator_framework.json     # Validated SDG4 indicator ID mappings
 │   ├── region_order.json            # UIS regional classification
@@ -261,14 +247,16 @@ uis-sdg4-mcp/
 
 ## Data source
 
-All data is retrieved live from the **UIS public API**:
-`https://api.uis.unesco.org/api/public`
+All data is retrieved live from the **UNESCO DataHub** (Opendatasoft Explore API v2.1):
+`https://data.unesco.org/api/explore/v2.1/catalog/datasets/uis001`
 
 No data is stored locally. The codebooks contain only structural metadata
 (indicator IDs, regional groupings, validity rules) — not data values.
 
-Source: UNESCO Institute for Statistics — UIS Bulk Data Download / UIS API,
-SDG4 Monitoring Framework, January 2026.
+Source: UNESCO Institute for Statistics — UIS SDG 4 Education Indicators (Global & Thematic),
+dataset `uis001`, accessed via data.unesco.org.
+
+See `docs/datahub-vs-uis-api.md` for a comparison of the legacy UIS API and the current DataHub approach.
 
 ---
 
