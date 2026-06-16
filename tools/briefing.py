@@ -106,7 +106,7 @@ def format_country_briefing(
         "iso3":                iso3,
         "threshold_year":      threshold_year,
         "generated_date":      date.today().isoformat(),
-        "data_source":         "UIS API — observed/reported data only",
+        "data_source":         "UNESCO DataHub (dataset uis001) — observed/reported data only",
         "indicators":          sections,
         "summary": {
             "total_requested":       len(sections),
