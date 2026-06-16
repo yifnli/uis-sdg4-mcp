@@ -84,3 +84,22 @@ def test_fetch_propagates_http_error():
     with patch("tools.fetch_data._get", return_value={"_error": "HTTP 500"}):
         out = fetch_indicator_data(["CR.1"], "UZB", 2000, 2025)
     assert "error" in out["CR.1"]
+
+
+from unittest.mock import patch as _patch
+from tools.coverage import compute_coverage
+
+
+def test_world_coverage_uses_distinct_countries():
+    def fake_distinct(indicator_id, after_year=None):
+        if after_year is None:
+            return ["CHN", "IND", "USA", "FRA"]
+        return ["CHN", "IND"]  # only these have post-threshold data
+
+    with _patch("tools.coverage.fetch_distinct_countries", side_effect=fake_distinct):
+        out = compute_coverage(["LR.AG15T99"], geo_unit="all", threshold_year=2020)
+
+    cov = out["indicators"]["LR.AG15T99"]
+    assert cov["coverage_any_data"]["n_countries"] == 4
+    assert cov["coverage_post_threshold"]["n_countries"] == 2
+    assert set(cov["coverage_post_threshold"]["covered_iso3s"]) == {"CHN", "IND"}

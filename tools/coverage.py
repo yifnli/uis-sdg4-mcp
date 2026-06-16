@@ -14,7 +14,7 @@ Population data:   codebooks/population_2025.json (UN WPP 2024 / UIS bulk downlo
 from __future__ import annotations
 import json
 from pathlib import Path
-from tools.fetch_data import fetch_indicator_data
+from tools.fetch_data import fetch_indicator_data, fetch_distinct_countries
 from tools.map_indicators import resolve_sdg_indicators
 from tools.resolve_country import compute_population_coverage, get_all_iso3s
 
@@ -95,42 +95,24 @@ def compute_coverage(
         }
 
     else:
-        # ── World coverage: fetch per-country for each indicator ──────────────
-        # For each indicator, fetch data for every UIS world country individually,
-        # then aggregate. This is the authoritative approach but makes many API calls.
-        # To keep API calls manageable, we fetch each indicator for all countries.
-
+        # ── World coverage via ODS aggregation ────────────────────────────────
+        # One group_by(country_id) sweep per indicator gives the distinct set of
+        # countries with data — no per-country fan-out.
         all_iso3s = get_all_iso3s()   # 214 UIS World countries
 
         for iid in indicator_ids:
-            covered_any  = []   # ISO3s with any valid data in window
-            covered_post = []   # ISO3s with data after threshold_year
-            latest_years = {}   # iso3 -> latest year
+            covered_any  = fetch_distinct_countries(iid, after_year=None)
+            if isinstance(covered_any, dict) and "_error" in covered_any:
+                results[iid] = {"indicator_id": iid, "error": covered_any["_error"]}
+                continue
+            covered_post = fetch_distinct_countries(iid, after_year=threshold_year)
+            if isinstance(covered_post, dict) and "_error" in covered_post:
+                covered_post = []
 
-            # Fetch per country
-            # Note: some UIS API endpoints support multi-country queries;
-            # for robustness we fetch one at a time with error isolation.
-            for iso3 in all_iso3s:
-                ctry_data = fetch_indicator_data(
-                    indicator_ids=[iid],
-                    geo_unit=iso3,
-                    start_year=start_year,
-                    end_year=end_year,
-                    observed_only=True,
-                )
-                r = ctry_data.get(iid, {})
-                if "error" in r:
-                    continue
-
-                records = r.get("records", [])
-                if records:
-                    covered_any.append(iso3)
-                    latest_years[iso3] = r.get("latest_year")
-
-                records_post = [rec for rec in records
-                                if rec.get("year") and rec["year"] > threshold_year]
-                if records_post:
-                    covered_post.append(iso3)
+            # Keep only ISO3s in the UIS World universe for population weighting.
+            universe = set(all_iso3s)
+            covered_any  = [c for c in covered_any  if c in universe]
+            covered_post = [c for c in covered_post if c in universe]
 
             pop_any  = compute_population_coverage(covered_any)
             pop_post = compute_population_coverage(covered_post)
@@ -139,33 +121,30 @@ def compute_coverage(
                 "indicator_id":    iid,
                 "threshold_year":  threshold_year,
                 "coverage_any_data": {
-                    "n_countries":      pop_any["n_countries_covered"],
-                    "pct_countries":    pop_any["pct_countries"],
-                    "pct_population":   pop_any["pct_population"],
-                    "covered_iso3s":    covered_any,
+                    "n_countries":   pop_any["n_countries_covered"],
+                    "pct_countries": pop_any["pct_countries"],
+                    "pct_population": pop_any["pct_population"],
+                    "covered_iso3s": covered_any,
                 },
                 "coverage_post_threshold": {
-                    "n_countries":      pop_post["n_countries_covered"],
-                    "pct_countries":    pop_post["pct_countries"],
-                    "pct_population":   pop_post["pct_population"],
-                    "covered_iso3s":    covered_post,
+                    "n_countries":   pop_post["n_countries_covered"],
+                    "pct_countries": pop_post["pct_countries"],
+                    "pct_population": pop_post["pct_population"],
+                    "covered_iso3s": covered_post,
                 },
                 "population_reference_year": pop_any.get("population_year", 2025),
                 "population_source":         pop_any.get("population_source", ""),
             }
 
         return {
-            "threshold_year": threshold_year,
-            "geo_unit":       "all",
+            "threshold_year":  threshold_year,
+            "geo_unit":        "all",
             "n_uis_countries": len(all_iso3s),
-            "indicators":     results,
-            "summary": {
-                "total_indicators": len(indicator_ids),
-            },
+            "indicators":      results,
+            "summary": {"total_indicators": len(indicator_ids)},
             "note": (
-                "World coverage computed by fetching data for each of the 214 UIS "
-                "World countries individually. This requires one API call per country "
-                "per indicator. For quick checks, use geo_unit=<ISO3> for single countries."
+                "World coverage computed via a single DataHub group_by(country_id) "
+                "aggregation per indicator over dataset uis001."
             ),
         }
 
