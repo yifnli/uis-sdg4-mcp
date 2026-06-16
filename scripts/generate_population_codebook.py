@@ -25,7 +25,12 @@ import sys
 from datetime import date
 from pathlib import Path
 
-import pandas as pd
+import requests
+
+try:
+    import pandas as pd
+except ImportError:
+    pd = None  # pandas is optional when using --from-datahub
 
 REPO_ROOT    = Path(__file__).parent.parent
 CODEBOOK_OUT = REPO_ROOT / "codebooks" / "population_2025.json"
@@ -56,13 +61,106 @@ def load_codebook(path: str) -> dict:
     return dict(zip(df["CO_CODE"], df["ISO3"]))
 
 
+WDI_EXPORT_URL = "https://data.unesco.org/api/explore/v2.1/catalog/datasets/wdi001/exports/json"
+
+# Manual name overrides: wdi001 country_title_en (normalized) → UIS iso3
+# These are genuine spelling mismatches between wdi001 and countries.json UIS names.
+_WDI_NAME_OVERRIDES: dict[str, str] = {
+    # wdi001 uses "Macao, China"; UIS uses "China, Macao Special Administrative Region"
+    "macao, china": "MAC",
+    # wdi001 uses "State of Palestine"; UIS uses "Palestine"
+    "state of palestine": "PSE",
+    # wdi001 uses "Faroes"; UIS uses "Faeroe Islands"
+    "faroes": "FRO",
+    # wdi001 uses "Sint Maarten"; UIS uses "Sint Maarten (Dutch part)"
+    "sint maarten": "SXM",
+}
+
+
+def _norm(name: str) -> str:
+    return " ".join(str(name).strip().lower().split())
+
+
+def build_from_datahub() -> dict:
+    """
+    Pull wdi001.population_total (World Bank, on the UNESCO DataHub), keep the latest
+    year per country, and map to the 214 UIS ISO3 countries by normalized English name.
+    Returns the population_2025.json payload dict. Prints any UIS country left unmatched.
+    """
+    with open(COUNTRIES_CB, encoding="utf-8") as f:
+        uis = json.load(f)["countries"]
+    name_to_iso3 = {_norm(c["name"]): c["iso3"] for c in uis}
+    # Apply manual overrides (wdi001 spelling → iso3)
+    name_to_iso3.update(_WDI_NAME_OVERRIDES)
+
+    params = {
+        "where": "population_total is not null",
+        "select": "country,country_title_en,year,population_total",
+    }
+    print("Fetching wdi001 from UNESCO DataHub…", file=sys.stderr)
+    resp = requests.get(WDI_EXPORT_URL, params=params, timeout=120)
+    resp.raise_for_status()
+    rows = resp.json()  # exports/json returns a JSON array of records
+    print(f"Fetched {len(rows)} rows from wdi001.", file=sys.stderr)
+
+    latest: dict[str, dict] = {}
+    for r in rows:
+        key = r.get("country")  # ISO2
+        if key is None or r.get("population_total") is None:
+            continue
+        yr = int(r["year"])
+        if key not in latest or yr > latest[key]["year"]:
+            latest[key] = {"year": yr, "name": r.get("country_title_en", ""),
+                           "pop": int(round(r["population_total"]))}
+
+    pop_by_iso3: dict[str, int] = {}
+    used_year = 0
+    for rec in latest.values():
+        iso3 = name_to_iso3.get(_norm(rec["name"]))
+        if iso3:
+            pop_by_iso3[iso3] = rec["pop"]
+            used_year = max(used_year, rec["year"])
+
+    missing = sorted(c["iso3"] for c in uis if c["iso3"] not in pop_by_iso3)
+    if missing:
+        print(f"WARNING: {len(missing)} UIS countries unmatched in wdi001: {missing}",
+              file=sys.stderr)
+
+    return {
+        "_comment": "Total population per ISO3 for the 214 UIS World countries.",
+        "_source": "UNESCO DataHub dataset wdi001 (World Bank WDI), field population_total",
+        "_source_year": used_year,
+        "_total_world_population": sum(pop_by_iso3.values()),
+        "population_by_iso3": dict(sorted(pop_by_iso3.items())),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Regenerate population_2025.json from UIS bulk data.")
-    parser.add_argument("--pop-file",  required=True, help="Path to UIS population file (no extension needed)")
-    parser.add_argument("--codebook",  required=True, help="Path to DEM_Codebook_xlsx_-_CO_CODE.csv")
+    parser.add_argument("--pop-file",  help="Path to UIS population file (no extension needed)")
+    parser.add_argument("--codebook",  help="Path to DEM_Codebook_xlsx_-_CO_CODE.csv")
     parser.add_argument("--year",      type=int, default=DEFAULT_YEAR, help=f"Population year (default: {DEFAULT_YEAR})")
     parser.add_argument("--out",       default=str(CODEBOOK_OUT), help="Output JSON path")
+    parser.add_argument("--from-datahub", action="store_true",
+                        help="Backfill populations from DataHub wdi001 (no local files needed).")
     args = parser.parse_args()
+
+    if args.from_datahub:
+        payload = build_from_datahub()
+        out_path = Path(args.out)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(out_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=2)
+        print(f"Wrote {out_path} — {len(payload['population_by_iso3'])} countries, "
+              f"year {payload['_source_year']}.")
+        return
+
+    # Pandas path requires --pop-file and --codebook
+    if not args.pop_file or not args.codebook:
+        parser.error("--pop-file and --codebook are required unless --from-datahub is set.")
+
+    if pd is None:
+        sys.exit("pandas is required for the UIS bulk-file path. Install with: uv sync --extra scripts")
 
     # Load UIS world countries
     with open(COUNTRIES_CB, encoding="utf-8") as f:
