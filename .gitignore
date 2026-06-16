@@ -12,3 +12,6 @@ build/
 .pytest_cache/
 .DS_Store
 *.log
+
+# pytest-cov
+.coverage

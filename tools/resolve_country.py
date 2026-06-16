@@ -1,14 +1,14 @@
 """
 tools/resolve_country.py
 ------------------------
-Resolves country names (in any common form) to ISO3 codes used by the UIS API,
+Resolves country names (in any common form) to ISO3 codes used by the UNESCO DataHub,
 and provides population-weighted coverage calculations.
 
 Country data is grounded in codebooks/countries.json (214 UIS World countries,
 derived from SDG_COUNTRY.csv + SDG_REGION.csv).
 
-Population data is grounded in codebooks/population_2025.json (UN WPP 2024
-estimates, or regenerated from UIS bulk download via scripts/generate_population_codebook.py).
+Population data is grounded in codebooks/population_2025.json (DataHub wdi001 /
+World Bank population_total, regenerated via scripts/generate_population_codebook.py --from-datahub).
 """
 
 from __future__ import annotations
@@ -185,7 +185,6 @@ def list_countries_by_region(region: str | None = None) -> dict:
     ]
 
     if not matched:
-        from codebooks_meta import _REGIONS  # noqa: local import avoids circular
         return {
             "error":    f"No countries matched region '{region}'.",
             "hint":     "Available regions: Sub-Saharan Africa, Arab States, Central Asia, "

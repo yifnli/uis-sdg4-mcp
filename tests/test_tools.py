@@ -366,6 +366,15 @@ class TestResolveCountry:
         assert r["summary"]["unresolved"] == 1
 
 
+class TestListCountriesByRegion:
+
+    def test_list_countries_by_region_unknown_returns_error_not_crash(self):
+        from tools.resolve_country import list_countries_by_region
+        out = list_countries_by_region("Narnia")
+        assert isinstance(out, dict)
+        assert "error" in out
+
+
 class TestPopulationCoverage:
 
     def test_full_world_coverage(self):
@@ -447,3 +456,26 @@ class TestAPIFetch:
         if "error" in result:
             pytest.skip(f"API not reachable: {result['error']}")
         assert len(result["confirmed"]) > 0, "None of the core IDs found in API"
+
+
+@pytest.mark.api
+class TestDataHubLive:
+    def test_fetch_real_country_indicator(self):
+        from tools.fetch_data import fetch_indicator_data
+        out = fetch_indicator_data(["LR.AG15T99"], "UZB", 2000, 2025)
+        rec = out["LR.AG15T99"]
+        assert "error" not in rec
+        assert rec["total_valid"] >= 1
+        assert rec["latest_year"] is not None
+
+    def test_validate_real_ids(self):
+        from tools.fetch_data import validate_indicator_ids_against_api
+        out = validate_indicator_ids_against_api(["LR.AG15T99", "TOTALLY.FAKE.ID"])
+        assert "LR.AG15T99" in out["confirmed"]
+        assert "TOTALLY.FAKE.ID" in out["not_in_api"]
+
+    def test_world_coverage_real(self):
+        from tools.coverage import compute_coverage
+        out = compute_coverage(["LR.AG15T99"], geo_unit="all", threshold_year=2015)
+        cov = out["indicators"]["LR.AG15T99"]["coverage_any_data"]
+        assert cov["n_countries"] >= 10
