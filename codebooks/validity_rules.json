@@ -2,12 +2,14 @@
   "_comment": "Data validity rules and UIS API configuration. Matches UIS bulk download conventions.",
 
   "api": {
-    "base_url": "https://api.uis.unesco.org/api/public",
+    "platform": "opendatasoft-explore-v2.1",
+    "base_url": "https://data.unesco.org/api/explore/v2.1",
+    "dataset_id": "uis001",
+    "dataset_title": "SDG 4 Education Indicators (Global & Thematic)",
     "endpoints": {
-      "data":       "/data/indicators",
-      "indicators": "/definitions/indicators",
-      "geo_units":  "/definitions/geoUnits"
+      "records": "/catalog/datasets/uis001/records"
     },
+    "max_page_limit": 100,
     "default_timeout_seconds": 20,
     "retry_attempts": 2
   },
